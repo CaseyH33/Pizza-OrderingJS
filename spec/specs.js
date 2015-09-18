@@ -9,3 +9,13 @@ describe('Pizza', function() {
     expect(testPizza.toppings).to.eql(["cheese", "pepperoni"]);
   });
 });
+
+describe('Topping', function() {
+  it("a new topping with the given specifications", function() {
+    var toppingItem = "cheese";
+    var toppingCost = 1;
+    var testTopping = new Topping(toppingItem, toppingCost);
+    expect(testTopping.toppingItem).to.equal("cheese");
+    expect(testTopping.toppingCost).to.equal(1);
+  });
+});
