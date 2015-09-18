@@ -74,7 +74,7 @@ $(document).ready(function() {
   listPizzaSizes(pizzaSizes);
   listToppings(toppingsList);
   $("form#new-order").submit(function(event) {
-    event.preventDefault();
+
 
     var inputtedQuantity = parseInt($("input#quantity").val());
     console.log(pizzaSizes[0]);
@@ -89,5 +89,8 @@ $(document).ready(function() {
     var newPizza = new Pizza(inputtedQuantity, inputtedSize, inputtedToppings);
 
     var totalCost = newPizza.price();
+    $(".total-cost").text(totalCost);
+    $("#result").show();
+    event.preventDefault();
   });
 });
