@@ -25,7 +25,7 @@ describe('Topping', function() {
     var toppingCost = 1;
     var testTopping = new Topping(toppingItem, toppingCost);
     expect(testTopping.toppingItem).to.equal("cheese");
-    expect(testTopping.toppingCost).to.equal(1);
+    expect(testTopping.cost).to.equal(1);
   });
 });
 
@@ -35,6 +35,6 @@ describe('PizzaSize', function() {
     var sizeCost = 10;
     var testPizzaSize = new PizzaSize(sizeName, sizeCost);
     expect(testPizzaSize.sizeName).to.equal("medium");
-    expect(testPizzaSize.sizeCost).to.equal(10);
+    expect(testPizzaSize.cost).to.equal(10);
   });
 })
