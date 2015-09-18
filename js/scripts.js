@@ -73,6 +73,7 @@ toppingsList.push(pepperoni, sausage, canadianBacon, bacon, salami, olives, mush
 $(document).ready(function() {
   listPizzaSizes(pizzaSizes);
   listToppings(toppingsList);
+  $("#toppings").attr("size", toppingsList.length);
   $("form#new-order").submit(function(event) {
 
 

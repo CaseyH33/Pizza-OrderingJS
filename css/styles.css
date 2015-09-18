@@ -1,3 +1,39 @@
+body {
+  background-image: url("img/pizza-background.jpg");
+  background-size: cover;
+}
+
 #result {
   display: none;
+}
+
+@font-face {
+  font-family: headerFont;
+  src: url(fonts/pepperoni_pizza.ttf);
+}
+
+@font-face {
+  font-family: pizzaFont;
+  src: url(fonts/PizzaByAlfredo.ttf);
+}
+
+h1 {
+  font-family: headerFont;
+  color: 66FF66;
+  text-align: center;
+  font-size: 80px;
+}
+
+h2 {
+  font-family: pizzaFont;
+  color: white;
+}
+
+h3, h4 {
+  font-family: pizzaFont;
+  color: 99FFCC;
+}
+
+h2, h3 {
+  text-decoration: underline;
 }
