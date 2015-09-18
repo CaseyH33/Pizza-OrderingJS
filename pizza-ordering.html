@@ -13,18 +13,20 @@
           <h3>Create Your Order:</h3>
 
           <form id="new-order">
+            <!-- Small form-group input field for number of pizzas -->
             <div class="form-group row">
               <div class="col-xs-3">
-
                 <label for="quantity"><h4>Number of Pizzas:</h4></label>
                 <input type="number" class="form-control" id="quantity" required>
               </div>
             </div>
 
+            <!-- Dropdown menu for selecting the pizza size -->
             <div class="select">
               <h4>Pizza size: <select id="pizza-size"></select></h4>
             </div>
 
+            <!-- Select menu for selecting multiple topping inputs -->
             <h4>Toppings:</h4>
             <div class="select">
               <select id="toppings" multiple="multiple"></select>
@@ -34,8 +36,9 @@
             <button type="submit" class="btn btn-primary">Calculate Order Cost</button>
           </form>
 
+          <!-- Show the resulting cost -->
           <div id="result">
-            <h2>Your order will cost: <br>
+            <h2>Your order will cost: <br><br>
             $<span class="total-cost"></span></h2>
           </div>
       </div>

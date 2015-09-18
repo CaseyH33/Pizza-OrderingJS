@@ -1,9 +1,11 @@
+//Pizza constructor
 function Pizza(quantity, pizzaSize, toppings) {
   this.quantity = quantity;
   this.pizzaSize = pizzaSize;
   this.toppings = toppings;
 }
 
+//Prototype to calculate the cost of an order
 Pizza.prototype.price = function() {
   var cost = this.pizzaSize.cost;
   this.toppings.forEach(function(topping) {
@@ -12,16 +14,19 @@ Pizza.prototype.price = function() {
   return cost*this.quantity;
 }
 
+//Topping constructor
 function Topping(toppingItem, cost) {
   this.toppingItem = toppingItem;
   this.cost = cost;
 }
 
+//Pizza size constructor
 function PizzaSize(sizeName, cost) {
   this.sizeName = sizeName;
   this.cost = cost;
 }
 
+//Sorts an array by the cost, can be used on both Topping and PizzaSize
 function sortByCost(list) {
   list.sort(function(obj1, obj2) {
         if(obj1.cost > obj2.cost) {
@@ -34,6 +39,7 @@ function sortByCost(list) {
     });
 }
 
+//Appends the Pizza Size select list with all sizes
 function listPizzaSizes(pizzaSizes) {
   sortByCost(pizzaSizes);
   pizzaSizes.forEach(function(size, index) {
@@ -41,6 +47,7 @@ function listPizzaSizes(pizzaSizes) {
   });
 }
 
+//Appends the Toppings select list with all sizes
 function listToppings(toppingsList) {
   sortByCost(toppingsList);
   toppingsList.forEach(function(topping, index) {
@@ -48,6 +55,7 @@ function listToppings(toppingsList) {
   });
 }
 
+//Available Pizza Sizes
 var pizzaSizes = [];
 var small = new PizzaSize("Small", 7);
 var medium = new PizzaSize("Medium", 10);
@@ -55,6 +63,7 @@ var large = new PizzaSize("Large", 14);
 var extraLarge = new PizzaSize("Extra Large", 20);
 pizzaSizes.push(small, medium, large, extraLarge);
 
+//Available Toppings
 var toppingsList = [];
 var pepperoni = new Topping("Pepperoni", 2);
 var sausage = new Topping("Sausage", 2);
@@ -71,24 +80,31 @@ toppingsList.push(pepperoni, sausage, canadianBacon, bacon, salami, olives, mush
 
 
 $(document).ready(function() {
+  //List all available sizes and toppings
   listPizzaSizes(pizzaSizes);
   listToppings(toppingsList);
+  //This will make the field size of the toppings list to show all toppings
   $("#toppings").attr("size", toppingsList.length);
+
   $("form#new-order").submit(function(event) {
-
-
+    //Get the inputted quantity of pizzas from the form
     var inputtedQuantity = parseInt($("input#quantity").val());
-    console.log(pizzaSizes[0]);
+
+    //Get the index value of the pizza size from the form and assign inputtedSize to that corresponding pizzaSize object
     var inputtedSizeIndex = $("#pizza-size").val();
     var inputtedSize = pizzaSizes[inputtedSizeIndex];
+
+    //Create an empty array of inputtedToppings, and push each selected topping object into that array
     var inputtedToppings = [];
     $("#toppings option:selected").each(function(i, selected) {
       var currentIndex = $(selected).val();
       inputtedToppings[i] = toppingsList[currentIndex];
     });
 
+    //Create the new pizza order using inputted parameters
     var newPizza = new Pizza(inputtedQuantity, inputtedSize, inputtedToppings);
 
+    //Calculate the order cost using prototype price and show the result to the user
     var totalCost = newPizza.price();
     $(".total-cost").text(totalCost);
     $("#result").show();
